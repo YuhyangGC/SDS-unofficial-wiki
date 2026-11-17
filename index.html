@@ -143,7 +143,7 @@ dialog .ft{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
 <body>
 <header class="top">
  <button class="btn" id="mb" aria-label="메뉴">☰</button>
- <a class="brand" href="#/"><i>✦</i> <span>SDS 위키 (비공식)</span></a>
+ <a class="brand" href="#/"><i>✦</i> <span>SDS 위키 </span></a>
  <div class="search"><input type="search" id="sq" placeholder="주민·아이템 검색" aria-label="검색" autocomplete="off"><div class="sr" id="sr"></div></div>
 </header>
 <div class="ebar" id="ebar"></div>
@@ -328,7 +328,7 @@ function npcPage(n){
 function homePage(){
  const bd=SEAS.map(s=>{const l=G.npcs.filter(n=>n.bday[0]===s).sort((a,b)=>a.bday[1]-b.bday[1]);return `<div><h3>${SEA[s]}</h3>${l.length?l.map(n=>`<div>${n.bday[1]}일 · <a href="#/npc/${encodeURIComponent(n.key)}">${esc(n.ko)}</a></div>`).join(''):'<div class="empty">없음</div>'}</div>`}).join('');
  const cards=NPCS.map(n=>`<a class="card" href="#/npc/${encodeURIComponent(n.key)}"><div class="pslot">${avHTML(n.key,'portrait','dc')}</div><div class="nm">${esc(n.ko)}<small>${SEA[n.bday[0]]} ${n.bday[1]}일</small></div></a>`).join('');
- return `<h1>SDS 위키 <span class="tag">비공식</span></h1>
+ return `<h1>SDS 위키 <span class="tag"></span></h1>
  <p>Seven Deadly Sins(SDS) 모드의 정보들을 정리해둔 위키입니다. 왼쪽 목록이나 위쪽 검색에서 원하는 것을 검색할 수 있습니다.</p>
  <h2>주민 목록</h2><div class="grid">${cards}</div>
  <h2>계절별 생일</h2><div class="bd">${bd}</div>
@@ -435,7 +435,7 @@ function draw(keepScroll){
  const m=$('main');
  m.innerHTML=st.r[0]==='npc'?npcPage(NPC[st.r[1]]):st.r[0]==='items'?itemsPage():st.r[0]==='fish'?fishPage():st.r[0]==='prefs'?prefsPage():st.r[0]==='quests'?questsPage():st.r[0]==='recipes'?recipesPage():homePage();
  const n=st.r[0]==='npc'?NPC[st.r[1]]:null;
- document.title=(n?n.ko+' - ':st.r[0]==='items'?'SDS 아이템 - ':st.r[0]==='fish'?'SDS 낚시 - ':st.r[0]==='prefs'?'공통 선호도 - ':st.r[0]==='quests'?'퀘스트·특별 주문 - ':st.r[0]==='recipes'?'요리 레시피 - ':'')+'SDS 위키 (비공식)';
+ document.title=(n?n.ko+' - ':st.r[0]==='items'?'SDS 아이템 - ':st.r[0]==='fish'?'SDS 낚시 - ':st.r[0]==='prefs'?'공통 선호도 - ':st.r[0]==='quests'?'퀘스트·특별 주문 - ':st.r[0]==='recipes'?'요리 레시피 - ':'')+'SDS 위키 ';
  
  ebar();
 }
